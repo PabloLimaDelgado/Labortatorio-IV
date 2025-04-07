@@ -1,0 +1,30 @@
+{
+    "libros": [
+      {
+        "nombre": "El misterio de la luna roja",
+        "autor": "Valeria Montes",
+        "fechaLanzamiento": "2022-05-14"
+      },
+      {
+        "nombre": "Códigos del pasado",
+        "autor": "Javier Ríos",
+        "fechaLanzamiento": "2019-11-22"
+      },
+      {
+        "nombre": "Bajo el cielo de invierno",
+        "autor": "Lucía Fernández",
+        "fechaLanzamiento": "2021-08-30"
+      },
+      {
+        "nombre": "La última profecía",
+        "autor": "Ricardo Estrada",
+        "fechaLanzamiento": "2018-03-10"
+      },
+      {
+        "nombre": "Sombras en la tormenta",
+        "autor": "Ana Beltrán",
+        "fechaLanzamiento": "2023-07-05"
+      }
+    ]
+  }
+  

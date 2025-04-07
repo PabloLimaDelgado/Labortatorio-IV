@@ -1,0 +1,17 @@
+¿Qué ventajas tiene usar dotenv para manejar configuraciones sensibles en vez de tenerlas directamente en el código?
+
+Mantiene credenciales y configuraciones fuera del código fuente, evitando que se expongan en repositorios. Permite gestionar variables de entorno en un solo archivo (.env) sin necesidad de modificar el código. Permite cambiar configuraciones sin necesidad de modificar y recompilar el código. Facilita la configuración en diferentes entornos (desarrollo, pruebas, producción). Funciona con diversos frameworks y herramientas de Node.js.
+
+¿Por qué es importante utilizar Nodemon durante el desarrollo en proyectos de Node.js?
+
+Reinicia automáticamente el servidor cuando se detectan cambios en los archivos. Evita reiniciar manualmente la aplicación tras cada cambio. Permite probar cambios en tiempo real sin interrupciones. Funciona con cualquier aplicación de Node.js y se ejecuta con un simple comando (nodemon app.js).
+
+¿Qué diferencias encuentras entre el uso de require y import/export? ¿Por qué es preferible utilizar la sintaxis ES6 en proyectos modernos?
+
+La principal diferencia entre require() y import/export es la forma en que manejan la carga de módulos en JavaScript.
+
+require() pertenece al sistema CommonJS y utiliza la sintaxis const modulo = require('modulo'). Su carga de módulos es síncrona, lo que significa que bloquea la ejecución mientras se importa un módulo. Es nativo en versiones anteriores de Node.js y se usa más en proyectos antiguos. Además, permite importar dinámicamente módulos en tiempo de ejecución.
+
+Por otro lado, import/export pertenece a ES6 y utiliza la sintaxis import modulo from 'modulo'. Su carga de módulos es asíncrona, lo que mejora el rendimiento en comparación con require(). Para usarlo en Node.js, es necesario configurar "type": "module" en el archivo package.json o utilizar archivos con la extensión .mjs. A diferencia de require(), la importación en ES6 es estática, lo que significa que se resuelve en tiempo de compilación, lo que hace que el código sea más optimizado y eficiente.
+
+En proyectos modernos, se recomienda el uso de import/export debido a su mejor compatibilidad con herramientas actuales y su sintaxis más clara y estructurada.
