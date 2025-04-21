@@ -23,7 +23,6 @@ const taskShema = new mongoose.Schema({
 
   color: {
     type: String,
-    required: true,
   },
   asignada: {
     type: Boolean,

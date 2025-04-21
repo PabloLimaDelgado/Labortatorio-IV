@@ -11,7 +11,6 @@ const sprintShema = new mongoose.Schema({
   },
   color: {
     type: String,
-    require: true,
   },
 
   tareas: [

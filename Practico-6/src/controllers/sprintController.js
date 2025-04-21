@@ -62,3 +62,12 @@ export const putSprintAddTarea = async (idSprint, idTask) => {
     console.log(error);
   }
 };
+
+export const getTareaBySprintId = async (idSprint) => {
+  try {
+    const sprint = await sprintModel.findById(idSprint).populate("tareas");
+    return sprint.tareas;
+  } catch (error) {
+    console.log(error);
+  }
+};

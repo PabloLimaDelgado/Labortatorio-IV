@@ -3,6 +3,7 @@ import {
   deleteSprint,
   getAllSprint,
   getSprintById,
+  getTareaBySprintId,
   postSprints,
   putSprint,
   putSprintAddTarea,
@@ -14,7 +15,6 @@ sprintRouter.get("/", async (req, res) => {
   const response = await getAllSprint(req.query);
   res.json(response);
 });
-
 
 sprintRouter.get("/:idSprint", async (req, res) => {
   const { idSprint } = req.params;
@@ -42,6 +42,12 @@ sprintRouter.delete("/:idSprint", async (req, res) => {
 sprintRouter.put("/:idSprint/add_task/:idTask", async (req, res) => {
   const { idSprint, idTask } = req.params;
   const response = await putSprintAddTarea(idSprint, idTask);
+  res.json(response);
+});
+
+sprintRouter.get("/tareas/:idSprint", async (req, res) => {
+  const { idSprint } = req.params;
+  const response = await getTareaBySprintId(idSprint);
   res.json(response);
 });
 

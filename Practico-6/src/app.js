@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import backlogRouter from "./routes/backlog.routes.js";
 import { swaggerUi, swaggerSpecs } from "./docs/swagger.js";
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT;
 
 // Middleware para parsear JSON
 app.use(express.json());
+app.use(cors());
 
 //Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
