@@ -1,12 +1,14 @@
 import { Router } from "express";
 import {
   deleteSprint,
+  deleteTareaFromSprint,
   getAllSprint,
   getSprintById,
   getTareaBySprintId,
   postSprints,
   putSprint,
   putSprintAddTarea,
+  removeTareaFromSprint,
 } from "../controllers/sprintController.js";
 
 const sprintRouter = Router();
@@ -48,6 +50,18 @@ sprintRouter.put("/:idSprint/add_task/:idTask", async (req, res) => {
 sprintRouter.get("/tareas/:idSprint", async (req, res) => {
   const { idSprint } = req.params;
   const response = await getTareaBySprintId(idSprint);
+  res.json(response);
+});
+
+sprintRouter.delete("/:idSprint/remove_task/:idTask", async (req, res) => {
+  const { idSprint, idTask } = req.params;
+  const response = await deleteTareaFromSprint(idSprint, idTask);
+  res.json(response);
+});
+
+sprintRouter.put("/:idSprint/moveToBacklog/:idTask", async (req, res) => {
+  const { idSprint, idTask } = req.params;
+  const response = await removeTareaFromSprint(idSprint, idTask);
   res.json(response);
 });
 

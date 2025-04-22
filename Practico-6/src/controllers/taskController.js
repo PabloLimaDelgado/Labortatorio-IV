@@ -38,11 +38,8 @@ export const putTask = async (idTarea, tarea) => {
 
 export const deleteTask = async (idTarea) => {
   try {
-    const tarea = await getTaskById(idTarea);
-    if (tarea.asignada === false) {
-      const tareaEliminada = await taskModel.deleteOne({ _id: idTarea });
-      return tareaEliminada;
-    }
+    const tareaEliminada = await taskModel.deleteOne({ _id: idTarea });
+    return tareaEliminada;
   } catch (error) {
     console.log(error);
   }

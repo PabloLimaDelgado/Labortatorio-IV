@@ -1,5 +1,5 @@
 import { sprintModel } from "../models/Sprint.model.js";
-import { getTaskById } from "./taskController.js";
+import { deleteTask, getTaskById, putTask } from "./taskController.js";
 
 export const getAllSprint = async () => {
   try {
@@ -12,7 +12,7 @@ export const getAllSprint = async () => {
 
 export const getSprintById = async (idSprint) => {
   try {
-    const sprintById = await sprintModel.findById(idSprint);
+    const sprintById = await sprintModel.findById(idSprint).populate("tareas");
     return sprintById;
   } catch (error) {
     console.log(error);
@@ -67,6 +67,39 @@ export const getTareaBySprintId = async (idSprint) => {
   try {
     const sprint = await sprintModel.findById(idSprint).populate("tareas");
     return sprint.tareas;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteTareaFromSprint = async (idSprint, idTask) => {
+  try {
+    const sprint = await sprintModel.findById(idSprint);
+
+    sprint.tareas = sprint.tareas.filter(
+      (tareaId) => tareaId.toString() !== idTask
+    );
+    await deleteTask(idTask);
+    await sprint.save();
+
+    return await getSprintById(idSprint);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const removeTareaFromSprint = async (idSprint, idTask) => {
+  try {
+    const sprint = await sprintModel.findById(idSprint);
+
+    sprint.tareas = sprint.tareas.filter(
+      (tareaId) => tareaId.toString() !== idTask
+    );
+
+    const tarea = await getTaskById(idTask);
+    tarea.asignada = false;
+    await putTask(idTask, tarea);
+    await sprint.save();
   } catch (error) {
     console.log(error);
   }

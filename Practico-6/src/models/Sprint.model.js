@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const sprintShema = new mongoose.Schema({
+  nombre: {
+    type: String,
+    require: true,
+  },
   fechaInicio: {
     type: Date,
     require: true,
